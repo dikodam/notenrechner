@@ -8,6 +8,10 @@
     <artifactId>notentabelle</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <app.main.class>de.ergodirekt.dualestudenten.notenrechner.Main</app.main.class>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -19,7 +23,34 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${env.JAVA_HOME}/bin/javapackager</executable>
+                            <arguments>
+                                <argument>-createjar</argument>
+                                <argument>-appclass</argument>
+                                <argument>${app.main.class}</argument>
+                                <argument>-srcdir</argument>
+                                <argument>${project.build.directory}/classes</argument>
+                                <argument>-outdir</argument>
+                                <argument>./target</argument>
+                                <argument>-outfile</argument>
+                                <argument>Notenrechner 2000 v 3.5</argument>
+                                <argument>-v</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>
