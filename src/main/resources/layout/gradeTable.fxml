@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ergodirekt.dualestudenten.notenrechner.GradeTableController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Notenblätter">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#createNewGradeCollection" text="neues Notenblatt" />
+                        <MenuItem mnemonicParsing="false" onAction="#openExistingGradeCollection" text="Notenblatt öffnen" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Speichern unter..." />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="345.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="290.0" minHeight="10.0" prefHeight="264.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="tfSearchBar" promptText="Suche..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="NEVER" />
+                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="255.0" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                    <content>
+                        <TableView fx:id="gradeTable" editable="true">
+                            <columns>
+                                <TableColumn fx:id="fullNameColumn" editable="true" prefWidth="126.0" text="voller Name" />
+                                <TableColumn fx:id="shortNameColumn" prefWidth="120.0" text="kurzer Name" />
+                                <TableColumn fx:id="gradeColumn" prefWidth="75.0" text="Note" />
+                                <TableColumn fx:id="ectsColumn" prefWidth="75.0" text="ECTS" />
+                                <TableColumn fx:id="loadColumn" prefWidth="75.0" text="Gewichtung" />
+                                <TableColumn fx:id="semesterColumn" prefWidth="75.0" text="Semester" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </content>
+                </ScrollPane>
+                <Label fx:id="lblGradeMean" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                <HBox fx:id="inputFields" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="2.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                    <children>
+                        <TextField fx:id="tfFullName" promptText="voller Name..." />
+                        <TextField fx:id="tfShortName" promptText="kurzer Name..." />
+                        <TextField fx:id="tfGrade" promptText="Note..." />
+                        <TextField fx:id="tfEcts" promptText="ECTS..." />
+                        <TextField fx:id="tfLoad" promptText="Gewichtung..." />
+                        <TextField fx:id="tfSemester" promptText="Semester..." />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="3" GridPane.rowIndex="3">
+                    <children>
+                        <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#processEditButton" text="Auswahl bearbeiten" />
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#processSaveButton" text="in Auswahl speichern" />
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#processDeleteButton" text="Auswahl löschen" />
+                        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#processAddButton" text="Neu speichern" />
+                        <Button fx:id="btnClear" mnemonicParsing="false" onAction="#processClearButton" text="Leeren" />
+                    </children>
+                </HBox>
+                <Label fx:id="lblName" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>
