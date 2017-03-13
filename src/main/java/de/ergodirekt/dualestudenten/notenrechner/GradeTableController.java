@@ -1,4 +1,5 @@
 package de.ergodirekt.dualestudenten.notenrechner;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,9 +8,6 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-
-import static javafx.scene.control.Alert.AlertType;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -17,7 +15,10 @@ import javafx.stage.FileChooser;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
@@ -25,6 +26,9 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
+
+import static javafx.scene.control.Alert.AlertType;
+
 public class GradeTableController {
 
     private static final int SAVE = 0;
@@ -410,18 +414,22 @@ public class GradeTableController {
     }
 
     public void createNewGradeCollection() {
-        TextInputDialog inputDialog = new TextInputDialog("");
-        inputDialog.getEditor().setPromptText("Name...");
-        inputDialog.setTitle("Name eingeben");
-        inputDialog.setHeaderText(null);
-        inputDialog.setContentText("Name der neuen Notentabelle eingeben:");
-        Optional<String> result = inputDialog.showAndWait();
+        Optional<String> result = inputName();
         if (result.isPresent()) {
             if (createSaveFile(SAVE)) {
                 Platform.runLater(() -> lblName.setText(result.get()));
                 tableData.clear();
             }
         }
+    }
+
+    private Optional<String> inputName() {
+        TextInputDialog inputDialog = new TextInputDialog("");
+        inputDialog.getEditor().setPromptText("Name...");
+        inputDialog.setTitle("Name eingeben");
+        inputDialog.setHeaderText(null);
+        inputDialog.setContentText("Name der neuen Notentabelle eingeben:");
+        return inputDialog.showAndWait();
     }
 
     public void openExistingGradeCollection() {
@@ -432,9 +440,16 @@ public class GradeTableController {
     }
 
     public void saveAs() {
-        createSaveFile(SAVE);
+        if ("".equals(lblName.getText())) {
+            Optional<String> name = inputName();
+            if (!name.isPresent()) {
+                return;
+            }
+        }
         try {
-            persist();
+            if (createSaveFile(SAVE)) {
+                persist();
+            }
         } catch (JAXBException e) {
             e.printStackTrace();
         }
