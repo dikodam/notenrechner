@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootPane" alignment="TOP_CENTER" minHeight="300.0" minWidth="610.0" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ergodirekt.dualestudenten.notenrechner.GradeTableController">
+<VBox fx:id="rootPane" alignment="TOP_CENTER" minHeight="300.0" minWidth="610.0" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ergodirekt.dualestudenten.notenrechner.GradeTableController">
     <padding>
         <Insets bottom="20.0" />
     </padding>
@@ -31,15 +31,21 @@
     </MenuBar>
     <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="25.0" />
         </rowConstraints>
-        <Label fx:id="lblName" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-        <TextField fx:id="tfSearchBar" promptText="Suche..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <Label fx:id="lblName" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin></Label>
+        <TextField fx:id="tfSearchBar" promptText="Suche..." GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></TextField>
       <VBox.margin>
          <Insets left="20.0" right="20.0" top="20.0" />
       </VBox.margin>
