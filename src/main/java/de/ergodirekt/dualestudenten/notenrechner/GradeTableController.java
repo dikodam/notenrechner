@@ -429,7 +429,8 @@ public class GradeTableController {
         inputDialog.setTitle("Name eingeben");
         inputDialog.setHeaderText(null);
         inputDialog.setContentText("Name der neuen Notentabelle eingeben:");
-        return inputDialog.showAndWait();
+        Optional<String> name = inputDialog.showAndWait();
+        return name;
     }
 
     public void openExistingGradeCollection() {
@@ -445,6 +446,8 @@ public class GradeTableController {
             if (!name.isPresent()) {
                 return;
             }
+            // FIXME: 14.03.2017 "" als name abfangen
+            Platform.runLater(() -> lblName.setText(name.get()));
         }
         try {
             if (createSaveFile(SAVE)) {
