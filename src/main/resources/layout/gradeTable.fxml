@@ -21,8 +21,8 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Notenblätter">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#createNewGradeCollection" text="neues Notenblatt" />
-                        <MenuItem mnemonicParsing="false" onAction="#openExistingGradeCollection" text="Notenblatt öffnen" />
+                        <MenuItem mnemonicParsing="false" onAction="#createNewGradeCollection" text="Neues Notenblatt" />
+                        <MenuItem mnemonicParsing="false" onAction="#openExistingGradeCollection" text="Notenblatt öffnen..." />
                         <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Speichern unter..." />
                     </items>
                 </Menu>
@@ -75,8 +75,9 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="3" GridPane.rowIndex="3">
                     <children>
+                        <!-- TODO Button fx-IDs sind doch eigl überflüßig? (auch bei der mainMenu.fxml) -->
                         <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#processEditButton" text="Auswahl bearbeiten" />
-                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#processSaveButton" text="in Auswahl speichern" />
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#processSaveButton" text="Auswahl überschreiben" />
                         <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#processDeleteButton" text="Auswahl löschen" />
                         <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#processAddButton" text="Neu speichern" />
                         <Button fx:id="btnClear" mnemonicParsing="false" onAction="#processClearButton" text="Leeren" />
