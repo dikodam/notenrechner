@@ -413,9 +413,11 @@ public class GradeTableController {
         }
     }
 
+    // TODO 14.03.2016 evtl bessere/abstraktere Methoden zusammen mit saveAs() benutzen
     public void createNewGradeCollection() {
         Optional<String> result = inputName();
-        if (result.isPresent()) {
+        if (result.isPresent() && !"".equals(result.get())) {
+            // TODO 14.03.2016 auch hier evtl warnen dass keine Persistenz besteht ausgewählt
             if (createSaveFile(SAVE)) {
                 Platform.runLater(() -> lblName.setText(result.get()));
                 tableData.clear();
@@ -443,10 +445,10 @@ public class GradeTableController {
     public void saveAs() {
         if ("".equals(lblName.getText())) {
             Optional<String> name = inputName();
-            if (!name.isPresent()) {
+            if (!name.isPresent() || "".equals(name.get())) {
+            // TODO: 14.03.2017 warnen dass nichts gespeichert wird?
                 return;
             }
-            // FIXME: 14.03.2017 "" als name abfangen
             Platform.runLater(() -> lblName.setText(name.get()));
         }
         try {
