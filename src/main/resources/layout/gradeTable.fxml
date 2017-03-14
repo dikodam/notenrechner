@@ -11,87 +11,75 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootPane" alignment="TOP_CENTER" minHeight="300.0" minWidth="610.0" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ergodirekt.dualestudenten.notenrechner.GradeTableController">
+<VBox fx:id="rootPane" alignment="TOP_CENTER" minHeight="300.0" minWidth="610.0" prefHeight="500.0" prefWidth="650.0"
+      xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.ergodirekt.dualestudenten.notenrechner.GradeTableController">
     <padding>
-        <Insets bottom="20.0" />
+        <Insets bottom="20.0"/>
     </padding>
-
     <MenuBar BorderPane.alignment="CENTER">
         <Menu mnemonicParsing="false" text="Notenblätter">
-            <MenuItem mnemonicParsing="false" onAction="#createNewGradeCollection" text="Neues Notenblatt" />
-            <MenuItem mnemonicParsing="false" onAction="#openExistingGradeCollection" text="Notenblatt öffnen..." />
-            <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Speichern unter..." />
+            <MenuItem mnemonicParsing="false" onAction="#createNewGradeCollection" text="Neues Notenblatt"/>
+            <MenuItem mnemonicParsing="false" onAction="#openExistingGradeCollection" text="Notenblatt öffnen..."/>
+            <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Speichern unter..."/>
         </Menu>
     </MenuBar>
-    <GridPane>
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="25.0" />
-        </rowConstraints>
-        <Label fx:id="lblName" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets right="10.0" />
-         </GridPane.margin></Label>
-        <TextField fx:id="tfSearchBar" promptText="Suche..." GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets left="10.0" />
-         </GridPane.margin></TextField>
-      <VBox.margin>
-         <Insets left="20.0" right="20.0" top="20.0" />
-      </VBox.margin>
-    </GridPane>
+    <HBox>
+        <Label fx:id="lblName">
+            <HBox.margin>
+                <Insets right="10.0"/>
+            </HBox.margin>
+        </Label>
+        <TextField fx:id="tfSearchBar" promptText="Suche..." HBox.hgrow="ALWAYS"/>
+        <VBox.margin>
+            <Insets left="20.0" right="20.0" top="20.0"/>
+        </VBox.margin>
+    </HBox>
     <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="100.0" prefWidth="Infinity" VBox.vgrow="ALWAYS">
         <VBox.margin>
-            <Insets left="20.0" right="20.0" top="20.0" />
+            <Insets left="20.0" right="20.0" top="20.0"/>
         </VBox.margin>
         <TableView fx:id="gradeTable" editable="true">
             <columns>
-                <TableColumn fx:id="fullNameColumn" prefWidth="126.0" text="voller Name" />
-                <TableColumn fx:id="shortNameColumn" prefWidth="120.0" text="kurzer Name" />
-                <TableColumn fx:id="gradeColumn" prefWidth="75.0" text="Note" />
-                <TableColumn fx:id="ectsColumn" prefWidth="75.0" text="ECTS" />
-                <TableColumn fx:id="loadColumn" prefWidth="75.0" text="Gewichtung" />
-                <TableColumn fx:id="semesterColumn" prefWidth="75.0" text="Semester" />
+                <TableColumn fx:id="fullNameColumn" prefWidth="126.0" text="voller Name"/>
+                <TableColumn fx:id="shortNameColumn" prefWidth="120.0" text="kurzer Name"/>
+                <TableColumn fx:id="gradeColumn" prefWidth="75.0" text="Note"/>
+                <TableColumn fx:id="ectsColumn" prefWidth="75.0" text="ECTS"/>
+                <TableColumn fx:id="loadColumn" prefWidth="75.0" text="Gewichtung"/>
+                <TableColumn fx:id="semesterColumn" prefWidth="75.0" text="Semester"/>
             </columns>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
     </ScrollPane>
     <HBox fx:id="inputFields" minHeight="25.0" spacing="2.0">
-        <TextField fx:id="tfFullName" promptText="voller Name..." HBox.hgrow="ALWAYS" />
-        <TextField fx:id="tfShortName" promptText="kurzer Name..." HBox.hgrow="ALWAYS" />
-        <TextField fx:id="tfGrade" promptText="Note..." HBox.hgrow="ALWAYS" />
-        <TextField fx:id="tfEcts" promptText="ECTS..." HBox.hgrow="ALWAYS" />
-        <TextField fx:id="tfLoad" promptText="Gewichtung..." HBox.hgrow="ALWAYS" />
-        <TextField fx:id="tfSemester" promptText="Semester..." HBox.hgrow="ALWAYS" />
+        <TextField fx:id="tfFullName" promptText="voller Name..." HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="tfShortName" promptText="kurzer Name..." HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="tfGrade" promptText="Note..." HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="tfEcts" promptText="ECTS..." HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="tfLoad" promptText="Gewichtung..." HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="tfSemester" promptText="Semester..." HBox.hgrow="ALWAYS"/>
         <VBox.margin>
-            <Insets left="20.0" right="20.0" top="5.0" />
+            <Insets left="20.0" right="20.0" top="5.0"/>
         </VBox.margin>
     </HBox>
     <HBox alignment="TOP_CENTER" minHeight="25.0" spacing="15.0">
         <VBox.margin>
-            <Insets left="20.0" right="20.0" top="5.0" />
+            <Insets left="20.0" right="20.0" top="5.0"/>
         </VBox.margin>
-        <Button mnemonicParsing="false" onAction="#processEditButton" text="Auswahl bearbeiten" />
-        <Button mnemonicParsing="false" onAction="#processSaveButton" text="Auswahl überschreiben" />
-        <Button mnemonicParsing="false" onAction="#processDeleteButton" text="Auswahl löschen" />
-        <Button mnemonicParsing="false" onAction="#processAddButton" text="Neu speichern" />
-        <Button mnemonicParsing="false" onAction="#processClearButton" text="Leeren" />
+        <Button mnemonicParsing="false" onAction="#processEditButton" text="Auswahl bearbeiten"/>
+        <Button mnemonicParsing="false" onAction="#processSaveButton" text="Auswahl überschreiben"/>
+        <Button mnemonicParsing="false" onAction="#processDeleteButton" text="Auswahl löschen"/>
+        <Button mnemonicParsing="false" onAction="#processAddButton" text="Neu speichern"/>
+        <Button mnemonicParsing="false" onAction="#processClearButton" text="Leeren"/>
     </HBox>
     <Label fx:id="lblGradeMean">
         <VBox.margin>
-            <Insets top="7.5" />
+            <Insets top="7.5"/>
         </VBox.margin>
     </Label>
 </VBox>
