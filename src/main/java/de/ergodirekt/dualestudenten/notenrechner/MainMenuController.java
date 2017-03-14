@@ -20,7 +20,7 @@ public class MainMenuController {
             GradeTableController gradeTableController = loader.getController();
 
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(new Scene(gradeTable, 650, 500));
+            stage.setScene(new Scene(gradeTable));
             stage.setMinHeight(300.0);
             stage.setMinWidth(610.0);
 
@@ -38,7 +38,7 @@ public class MainMenuController {
             GradeTableController gradeTableController = loader.getController();
 
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(new Scene(gradeTable, 650, 500));
+            stage.setScene(new Scene(gradeTable));
             stage.setMinHeight(335.0);
             stage.setMinWidth(625.0);
 
